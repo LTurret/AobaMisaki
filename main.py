@@ -15,7 +15,7 @@ Misaki.remove_command("help")
 @Misaki.event
 async def on_ready():
     await Misaki.change_presence(status = discord.Status.online, activity = discord.Game("偶像大師 百萬人演唱會！ 劇場時光"))
-    os.system("cls")
+    os.system("clear")
     print(f"Uptime")
 
 for filename in os.listdir("./cogs/command"):
