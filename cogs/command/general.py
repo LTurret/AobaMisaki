@@ -11,7 +11,7 @@ class general(commands.Cog):
     def __init__(self, Misaki):
         self.Misaki = Misaki
 
-    async def tantou(self, ctx, idol_name:str, role_id:int, testing:bool=False):
+    async def tantou(self, ctx, idol_name: str, role_id: int, testing: bool=False):
 
         guild = self.Misaki.get_guild(GUILD_ID)
         member = guild.get_member(ctx.author.id)
@@ -27,7 +27,7 @@ class general(commands.Cog):
             await member.add_roles(role)
             await ctx.send(f"**{idol_name}**擔當增加成功！")
 
-        elif any(list(map(lambda x: x.name == f"{idol_name}P", member.roles))):
+        elif any(list(map(lambda x: x.name == f"{idol_name}P", member.roles))) and isForceId == CHANNEL_ID:
             await member.remove_roles(role)
             await ctx.send(f"**{idol_name}**擔當移除成功！")
 
@@ -239,5 +239,5 @@ class general(commands.Cog):
     async def 歌織P(self, ctx, isForceId:bool=False):
         await self.tantou(ctx, "歌織", 961320170809339915, isForceId)
 
-def setup(Misaki):
-    Misaki.add_cog(general(Misaki))
+async def setup(Misaki):
+    await Misaki.add_cog(general(Misaki))

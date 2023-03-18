@@ -13,7 +13,7 @@ configurations = {
     "Draw_SSR": "<:GachaSSR:993767368264273960>"
 }
 
-class general(commands.Cog):
+class gacha(commands.Cog):
     def __init__(self, Misaki):
         self.Misaki = Misaki
 
@@ -54,5 +54,5 @@ class general(commands.Cog):
                 embed.add_field(name = "> 抽獎結果，抽了10次有SR保底", value = f'{result}', inline = False)
                 await ctx.send(embed = embed)
     
-def setup(Misaki):
-    Misaki.add_cog(general(Misaki))
+async def setup(Misaki):
+    await Misaki.add_cog(gacha(Misaki))
