@@ -1,33 +1,33 @@
-import asyncio, json, os
+from os import getenv
+from os import listdir
+from os import system
 
-import discord
-from discord.ext import commands
+from dotenv import load_dotenv
 
-with open("./config/token.json", mode="r") as token:
-    token = json.load(token)
+from interactions import listen
+from interactions import Activity
+from interactions import Client
+from interactions import Intents
 
-intents = discord.Intents.all()
-intents.members = True
-intents.messages = True
-intents.message_content = True
+load_dotenv()
 
-Misaki = commands.Bot(command_prefix="+", intents=discord.Intents.all())
-Misaki.remove_command("help")
+arisa = Client(
+    intents = Intents.ALL,
+    activity = Activity(
+        name = "⛔擔當申請目前無法使用"
+    )
+)
 
-@Misaki.event
-async def on_ready():
-    await Misaki.change_presence(status = discord.Status.online, activity = discord.Game("偶像大師 百萬人演唱會！ 劇場時光"))
-    os.system("clear")
-    print(f"美咲上線！")
+@listen()
+async def on_startup():
+    system("clear")
+    print(f"MLTD 啟動！！！")
 
-async def main():
-    async with Misaki:
-        for filename in os.listdir("./cogs/command"):
-            if filename.endswith(".py"):
-                print(f"Loading commands extension: {filename}")
-                await Misaki.load_extension(f"cogs.command.{filename[:-3]}")
-        await Misaki.start(token["token"])
+for filename in listdir("./cogs"):
+    if filename.endswith(".py"):
+        print(f"Loading extension: {filename}")
+        arisa.load_extension(f"cogs.{filename[:-3]}")
 
-print("Booting...")
+print("Starting...")
 
-asyncio.run(main())
+arisa.start(getenv("BOT_TOKEN"))

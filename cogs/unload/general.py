@@ -193,15 +193,15 @@ class general(commands.Cog):
 
     @commands.command()
     async def 風花P(self, ctx, isForceId:bool=False):
-        await self.tantou(ctx, "千鶴", 961316157716066375, isForceId)
+        await self.tantou(ctx, "風花", 961316157716066375, isForceId)
 
     @commands.command()
     async def 美也P(self, ctx, isForceId:bool=False):
-        await self.tantou(ctx, "木實", 961316158710116442, isForceId)
+        await self.tantou(ctx, "美也", 961316158710116442, isForceId)
 
     @commands.command()
     async def 法子P(self, ctx, isForceId:bool=False):
-        await self.tantou(ctx, "環", 961316157250494485, isForceId)
+        await self.tantou(ctx, "法子", 961316157250494485, isForceId)
 
     @commands.command()
     async def 瑞希P(self, ctx, isForceId:bool=False):
@@ -228,8 +228,8 @@ class general(commands.Cog):
         await self.tantou(ctx, "桃子", 961320094514937907, isForceId)
 
     @commands.command()
-    async def 茱莉亞P(self, ctx, isForceId:bool=False):
-        await self.tantou(ctx, "茱莉亞", 961041043938242570, isForceId)
+    async def JuliaP(self, ctx, isForceId:bool=False):
+        await self.tantou(ctx, "Julia", 961041043938242570, isForceId)
 
     @commands.command()
     async def 紬P(self, ctx, isForceId:bool=False):
