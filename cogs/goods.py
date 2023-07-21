@@ -1,10 +1,7 @@
-import io
-
-from random import randint
+from io import BytesIO
 
 from interactions import slash_command
 from interactions import slash_option
-from interactions import ComponentContext
 from interactions import Extension
 from interactions import File
 from interactions import OptionType
@@ -118,7 +115,7 @@ class goods(Extension):
 
         image.alpha_composite(img_idol)
 
-        with io.BytesIO() as image_binary:
+        with BytesIO() as image_binary:
             image.save(image_binary, "PNG")
             image_binary.seek(0)
             attachment = File(image_binary, file_name="goods.png")
